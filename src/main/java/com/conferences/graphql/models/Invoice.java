@@ -1,5 +1,6 @@
 package com.conferences.graphql.models;
 
+import com.conferences.graphql.commands.CreateInvoiceCommand;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -39,13 +40,9 @@ public class Invoice {
         lines.add(line);
     }
 
-    public static Invoice createInvoice(
-            String invoiceNumber,
-            Customer customer,
-            LocalDate issueDate,
-            LocalDate dueDate,
-            Set<InvoiceLine> lines
-    ) {
+    public static Invoice createInvoice(CreateInvoiceCommand invoiceCommand) {
+
+        Set<InvoiceLine> lines = invoiceCommand.lines();
 
         if (Objects.isNull(lines) || lines.isEmpty()) {
 
@@ -54,11 +51,13 @@ public class Invoice {
 
         return Invoice.builder()
                 .status(InvoiceStatus.DRAFT)
-                .invoiceNumber(invoiceNumber)
-                .customer(customer)
-                .issueDate(issueDate)
-                .dueDate(dueDate)
-                .lines(lines)
+                .invoiceNumber(invoiceCommand.invoiceNumber())
+                .customer(Customer.builder()
+                        .id(invoiceCommand.customerId())
+                        .build())
+                .issueDate(invoiceCommand.issueDate())
+                .dueDate(invoiceCommand.dueDate())
+                .lines(invoiceCommand.lines())
                 .build();
     }
 
