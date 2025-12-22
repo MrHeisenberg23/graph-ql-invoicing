@@ -1,11 +1,8 @@
 package com.conferences.invoicing.driven.models;
 
-import com.conferences.graphql.models.Customer;
-import com.conferences.graphql.models.InvoiceLine;
-import com.conferences.graphql.models.InvoiceStatus;
-import jakarta.persistence.*;
 import lombok.*;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;
 

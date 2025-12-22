@@ -2,17 +2,20 @@ package com.conferences.invoicing.commands.handlers;
 
 import com.conferences.invoicing.application.ports.driven.InvoiceReadDatasourcePort;
 import com.conferences.invoicing.application.ports.driven.InvoiceWriteDatasourcePort;
+import com.conferences.invoicing.application.ports.driving.InvoiceCommandPort;
 import com.conferences.invoicing.commands.AddInvoiceLineCommand;
 import com.conferences.invoicing.commands.CreateInvoiceCommand;
 import com.conferences.invoicing.domain.Invoice;
 import com.conferences.invoicing.domain.InvoiceLine;
 import com.conferences.invoicing.domain.Money;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
+@Service
 @RequiredArgsConstructor
-public class InvoiceCommandHandler {
+public class InvoiceCommandHandler implements InvoiceCommandPort {
 
     private final InvoiceReadDatasourcePort invoiceReadPort;
     private final InvoiceWriteDatasourcePort invoiceWritePort;

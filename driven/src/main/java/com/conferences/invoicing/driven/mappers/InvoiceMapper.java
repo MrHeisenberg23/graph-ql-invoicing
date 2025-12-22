@@ -1,5 +1,6 @@
 package com.conferences.invoicing.driven.mappers;
 
+import com.conferences.invoicing.domain.Invoice;
 import com.conferences.invoicing.driven.models.InvoiceMO;
 import org.mapstruct.Mapper;
 

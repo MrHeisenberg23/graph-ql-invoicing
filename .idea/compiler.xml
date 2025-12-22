@@ -16,10 +16,10 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="application" options="-parameters" />
-      <module name="boot" options="-parameters" />
-      <module name="driven" options="-parameters" />
-      <module name="driving" options="-parameters" />
+      <module name="application" options="" />
+      <module name="boot" options="" />
+      <module name="driven" options="" />
+      <module name="driving" options="" />
       <module name="graph-ql-invoicing" options="" />
     </option>
   </component>

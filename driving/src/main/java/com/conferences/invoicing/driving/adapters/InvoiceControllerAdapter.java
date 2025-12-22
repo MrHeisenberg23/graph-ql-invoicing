@@ -1,5 +1,9 @@
 package com.conferences.invoicing.driving.adapters;
 
+import com.conferences.invoicing.application.ports.driving.InvoiceCommandPort;
+import com.conferences.invoicing.commands.AddInvoiceLineCommand;
+import com.conferences.invoicing.commands.CreateInvoiceCommand;
+import com.conferences.invoicing.domain.Invoice;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -9,27 +13,28 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class InvoiceControllerAdapter {
 
-    /*private final InvoiceCommandPort invoiceCommandHandler;
+    private final InvoiceCommandPort invoiceCommandPort;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Invoice createInvoice(@RequestBody CreateInvoiceRequest request) {
+    public Invoice createInvoice(@RequestBody CreateInvoiceCommand request) {
 
       CreateInvoiceCommand command = new CreateInvoiceCommand(
               request.invoiceNumber(),
               request.customerId(),
               request.issueDate(),
-              request.dueDate()
+              request.dueDate(),
+              request.lines()
       );
 
-      return invoiceCommandHandler.handle(command);
+      return invoiceCommandPort.handle(command);
     }
 
     @PostMapping("/{invoiceId}/lines")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void addInvoiceLine(
             @PathVariable String invoiceId,
-            @RequestBody AddInvoiceLineRequest request
+            @RequestBody AddInvoiceLineCommand request
     ) {
       AddInvoiceLineCommand command = new AddInvoiceLineCommand(
               invoiceId,
@@ -39,6 +44,6 @@ public class InvoiceControllerAdapter {
               request.currency()
       );
 
-      invoiceCommandHandler.handle(command);
-    }*/
+      invoiceCommandPort.handle(command);
+    }
 }

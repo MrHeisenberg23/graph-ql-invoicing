@@ -1,0 +1,44 @@
+enum InvoiceStatus {
+  DRAFT
+  ISSUED
+  PAID
+  CANCELLED
+}
+
+scalar Date
+
+type Money {
+  amount: Float
+  currency: String
+}
+
+type Customer {
+  id: String
+  name: String
+  email: String
+  vatNumber: String
+}
+
+type InvoiceLine {
+  id: String
+  description: String
+  quantity: Int
+  unitPrice: Money
+  total: Money
+}
+
+type Invoice {
+  id: String
+  invoiceNumber: String
+  customer: Customer
+  issueDate: Date
+  dueDate: Date
+  status: InvoiceStatus
+  lines: [InvoiceLine]
+  totalAmount: Money
+}
+
+type Query {
+  getAllInvoices: [Invoice]
+  getInvoiceById(id: ID!): Invoice
+}

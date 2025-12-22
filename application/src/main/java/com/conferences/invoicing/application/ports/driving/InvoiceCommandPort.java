@@ -6,7 +6,7 @@ import com.conferences.invoicing.domain.Invoice;
 
 public interface InvoiceCommandPort {
 
-  Invoice createInvoice(CreateInvoiceCommand command);
+  Invoice handle(CreateInvoiceCommand command);
 
-  void addInvoiceLine(AddInvoiceLineCommand command);
+  void handle(AddInvoiceLineCommand command);
 }
