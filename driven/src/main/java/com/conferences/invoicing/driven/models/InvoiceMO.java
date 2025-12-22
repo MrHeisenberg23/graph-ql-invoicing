@@ -16,16 +16,23 @@ import java.util.Set;
 public class InvoiceMO {
 
     @Id
+    @Column(name = "id", nullable = false, length = 36)
     private String id;
 
+    @Column(name = "invoice_number", nullable = false, unique = true)
     private String invoiceNumber;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id")
     private CustomerMO customer;
 
+    @Column(name = "issue_date", nullable = false)
     private LocalDate issueDate;
+
+    @Column(name = "due_date", nullable = false)
     private LocalDate dueDate;
+
+    @Column(name = "status", nullable = false)
     private String status;
 
     @OneToMany(

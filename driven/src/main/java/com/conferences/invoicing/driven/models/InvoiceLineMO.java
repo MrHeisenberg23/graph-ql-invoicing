@@ -15,12 +15,13 @@ import java.math.BigDecimal;
 public class InvoiceLineMO {
 
     @Id
+    @Column(length = 36)
     private String id;
 
+    @Column(nullable = false)
     private String description;
 
-    private int quantity;
-
+    @Column(nullable = false, precision = 19, scale = 2)
     private BigDecimal amount;
 
     @ManyToOne(fetch = FetchType.LAZY)

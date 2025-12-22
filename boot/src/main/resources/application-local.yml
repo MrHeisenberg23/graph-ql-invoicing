@@ -1,7 +1,7 @@
 spring:
     flyway:
-        locations: classpath:migration/versions
-        enabled: false
+        locations: classpath:db/migration/versions
+        enabled: true
         baseline-on-migrate: true
         baseline-version: 0
 
@@ -24,15 +24,6 @@ spring:
         open-in-view: true
 
 fwkcna:
-    buckets:
-      - id: bucket1
-        bucket-name: ${STORAGE_BUCKET_NAME}
-        enabled: true
-        provider: gcs_s3
-        url: ${BUCKET_URL}
-        credentials:
-          access-key: ${BUCKET_ACCESS_KEY}
-          secret-key: ${BUCKET_SECRET_KEY}
     jpa:
         data-migration:
             disabled: false

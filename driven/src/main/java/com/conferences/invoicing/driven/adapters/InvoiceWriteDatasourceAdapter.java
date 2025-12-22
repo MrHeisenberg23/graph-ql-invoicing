@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.UUID;
 
 
 @Component
@@ -25,6 +26,7 @@ public class InvoiceWriteDatasourceAdapter implements InvoiceWriteDatasourcePort
   public void save(Invoice invoice) {
 
     InvoiceMO invoiceMO = invoiceMapper.map(invoice);
+    invoiceMO.setId(UUID.randomUUID().toString());
     em.merge(invoiceMO);
   }
 }

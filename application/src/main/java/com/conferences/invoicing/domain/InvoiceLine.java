@@ -4,19 +4,18 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 @Data
 @Builder
 @AllArgsConstructor
 public class InvoiceLine {
 
-    private final String id;
-    private final String description;
-    private final int quantity;
-    private final Money unitPrice;
+    private String id;
+    private String description;
 
-    public Money getTotal() {
+    private BigDecimal amount;
 
-        return unitPrice.multiply(quantity);
-    }
+    protected InvoiceLine() {}
 }
 

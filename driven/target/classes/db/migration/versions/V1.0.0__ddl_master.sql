@@ -22,9 +22,7 @@ CREATE TABLE invoice_lines (
                                id            VARCHAR(36) PRIMARY KEY,
                                invoice_id    VARCHAR(36) NOT NULL,
                                description   VARCHAR(255),
-                               quantity      INTEGER NOT NULL,
                                amount        NUMERIC(15, 2) NOT NULL,
-                               currency      VARCHAR(3) NOT NULL,
 
                                CONSTRAINT fk_line_invoice
                                    FOREIGN KEY (invoice_id)

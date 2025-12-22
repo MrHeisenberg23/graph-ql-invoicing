@@ -9,9 +9,9 @@ import lombok.Data;
 @AllArgsConstructor
 public class Customer {
 
-    private final String id;
-    private final String name;
-    private final String email;
-    private final String vatNumber;
+    private String id;
+    private String name;
+    private String email;
+    private String vatNumber;
 }
 

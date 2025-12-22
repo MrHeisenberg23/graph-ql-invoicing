@@ -7,11 +7,6 @@ enum InvoiceStatus {
 
 scalar Date
 
-type Money {
-  amount: Float
-  currency: String
-}
-
 type Customer {
   id: String
   name: String
@@ -22,9 +17,6 @@ type Customer {
 type InvoiceLine {
   id: String
   description: String
-  quantity: Int
-  unitPrice: Money
-  total: Money
 }
 
 type Invoice {
@@ -35,10 +27,9 @@ type Invoice {
   dueDate: Date
   status: InvoiceStatus
   lines: [InvoiceLine]
-  totalAmount: Money
 }
 
 type Query {
   getAllInvoices: [Invoice]
-  getInvoiceById(id: ID!): Invoice
+  getInvoiceById(id: String!): Invoice
 }

@@ -1,16 +1,16 @@
 spring:
   application:
-    name: cdv-back-web-masterdata
+    name: graph-ql-invoicing
 
   flyway:
-    locations: classpath:migration/versions
+    locations: classpath:db/migration/versions
     user: ${FLYWAY_DATABASE_USERNAME}
     password: ${FLYWAY_DATABASE_PASSWORD}
     baseline-on-migrate: true
     baseline-version: 0
 
   datasource:
-    url: ${DATABASE_PREFIX:jdbc:postgresql://}${DATABASE_URL}/${DATABASE_NAME}
+    url: ${LOCAL_DB_URL}
     driver-class-name: org.postgresql.Driver
     username: ${FLYWAY_DATABASE_USERNAME}
     password: ${FLYWAY_DATABASE_PASSWORD}
@@ -35,24 +35,9 @@ management:
         include: [ info, health, metrics, prometheus ]
 
 fwkcna:
-  buckets:
-    - id: bucket1
-      bucket-name: ${BUCKET_NAME}
-      enabled: true
-      provider: gcs_s3
-      url: ${BUCKET_ENDPOINT_GCP}
-      credentials:
-        access-key: ${BUCKET_ACCESS_KEY}
-        secret-key: ${BUCKET_SECRET_KEY}
   jpa:
     data-migration:
       disabled: false
-
-application:
-  parameters:
-    sites:
-      warehouseType: ZDC0
-      regionType: DR
 
 server:
   port: 8080

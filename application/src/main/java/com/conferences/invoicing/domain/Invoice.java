@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Set;
@@ -15,15 +16,17 @@ import java.util.Set;
 @AllArgsConstructor
 public class Invoice {
 
-    private final String id;
-    private final String invoiceNumber;
-    private final Customer customer;
+    private String id;
+    private String invoiceNumber;
+    private Customer customer;
 
-    private final LocalDate issueDate;
-    private final LocalDate dueDate;
+    private LocalDate issueDate;
+    private LocalDate dueDate;
 
     private InvoiceStatus status;
-    private final Set<InvoiceLine> lines;
+    private Set<InvoiceLine> lines;
+
+    private BigDecimal total;
 
     public void addLine(InvoiceLine line) {
 
@@ -59,12 +62,5 @@ public class Invoice {
                 .dueDate(invoiceCommand.dueDate())
                 .lines(invoiceCommand.lines())
                 .build();
-    }
-
-    public Money getTotalAmount() {
-        return lines.stream()
-                .map(InvoiceLine::getTotal)
-                .reduce(Money::add)
-                .orElse(null);
     }
 }
