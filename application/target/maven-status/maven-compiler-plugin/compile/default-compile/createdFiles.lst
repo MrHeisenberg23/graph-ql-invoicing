@@ -1,1 +1,14 @@
+com/conferences/invoicing/domain/Customer.class
+com/conferences/invoicing/domain/Money.class
+com/conferences/invoicing/domain/Invoice$InvoiceBuilder.class
+com/conferences/invoicing/domain/Invoice.class
+com/conferences/invoicing/commands/handlers/InvoiceCommandHandler.class
 com/conferences/invoicing/application/ports/driven/InvoiceReadDatasourcePort.class
+com/conferences/invoicing/application/ports/driving/InvoiceCommandPort.class
+com/conferences/invoicing/constants/InvoiceStatus.class
+com/conferences/invoicing/commands/CreateInvoiceCommand.class
+com/conferences/invoicing/application/ports/driven/InvoiceWriteDatasourcePort.class
+com/conferences/invoicing/domain/Customer$CustomerBuilder.class
+com/conferences/invoicing/domain/InvoiceLine.class
+com/conferences/invoicing/commands/AddInvoiceLineCommand.class
+com/conferences/invoicing/domain/InvoiceLine$InvoiceLineBuilder.class

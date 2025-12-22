@@ -5,6 +5,7 @@ import com.conferences.invoicing.domain.Invoice;
 import com.conferences.invoicing.driven.mappers.InvoiceMapper;
 import com.conferences.invoicing.driven.models.InvoiceMO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
