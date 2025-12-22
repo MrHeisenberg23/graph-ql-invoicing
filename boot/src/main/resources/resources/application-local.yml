@@ -1,0 +1,44 @@
+spring:
+    flyway:
+        locations: classpath:migration/versions
+        enabled: false
+        baseline-on-migrate: true
+        baseline-version: 0
+
+    cloud:
+        gcp:
+            sql:
+                enabled: false
+
+    datasource:
+        url: ${LOCAL_DB_URL}
+        driver-class-name: org.postgresql.Driver
+        username: ${LOCAL_DB_USER}
+        password: ${LOCAL_DB_PASSWORD}
+
+    jpa:
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+        hibernate.ddl-auto: validate
+        generate-ddl: false
+        show-sql: true
+        open-in-view: true
+
+fwkcna:
+    buckets:
+      - id: bucket1
+        bucket-name: ${STORAGE_BUCKET_NAME}
+        enabled: true
+        provider: gcs_s3
+        url: ${BUCKET_URL}
+        credentials:
+          access-key: ${BUCKET_ACCESS_KEY}
+          secret-key: ${BUCKET_SECRET_KEY}
+    jpa:
+        data-migration:
+            disabled: false
+
+
+application:
+  parameters:
+    sites:
+      warehouseType: ZDC0

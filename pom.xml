@@ -4,11 +4,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.conferences</groupId>
-  <artifactId>graphql-invoicing</artifactId>
+  <artifactId>invoicing</artifactId>
   <version>1.0.0</version>
-  <packaging>jar</packaging>
+  <packaging>pom</packaging>
 
-  <name>graphql-invoicing</name>
+  <name>invoicing</name>
   <description>GraphQL using invoicing domain</description>
 
   <parent>
@@ -104,5 +104,12 @@
       </plugin>
     </plugins>
   </build>
+
+  <modules>
+    <module>application</module>
+    <module>driving</module>
+    <module>driven</module>
+    <module>boot</module>
+  </modules>
 
 </project>
