@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 import java.util.Currency;
 
 public record AddInvoiceLineCommand(
-        String invoiceId,
-        String lineId,
+        Long invoiceId,
+        Long lineId,
         String description,
         BigDecimal amount
 ) {}

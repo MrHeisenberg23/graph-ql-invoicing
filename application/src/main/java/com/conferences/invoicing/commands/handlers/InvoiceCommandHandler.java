@@ -25,8 +25,8 @@ public class InvoiceCommandHandler implements InvoiceCommandPort {
 
         Invoice toBeCreatedInvoice = Invoice.createInvoice(command);
 
-        invoiceWritePort.save(toBeCreatedInvoice);
-        return invoiceReadPort.findById(toBeCreatedInvoice.getId()).orElseThrow();
+        Long createdInvoice = invoiceWritePort.save(toBeCreatedInvoice);
+        return invoiceReadPort.findById(createdInvoice).orElseThrow();
     }
 
     public void handle(AddInvoiceLineCommand command) {

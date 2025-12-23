@@ -15,8 +15,8 @@ import java.math.BigDecimal;
 public class InvoiceLineMO {
 
     @Id
-    @Column(length = 36)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(nullable = false)
     private String description;

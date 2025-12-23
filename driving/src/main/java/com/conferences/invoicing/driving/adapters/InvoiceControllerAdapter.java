@@ -37,7 +37,7 @@ public class InvoiceControllerAdapter {
             @RequestBody AddInvoiceLineCommand request
     ) {
       AddInvoiceLineCommand command = new AddInvoiceLineCommand(
-              invoiceId,
+              Long.valueOf(invoiceId),
               request.lineId(),
               request.description(),
               request.amount()

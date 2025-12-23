@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-12-23T14:18:21+0100",
+    date = "2025-12-23T15:02:00+0100",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.14 (Homebrew)"
 )
 @Component
@@ -82,7 +82,7 @@ public class InvoiceMapperImpl implements InvoiceMapper {
             return null;
         }
 
-        String id = null;
+        Long id = null;
         String invoiceNumber = null;
         Customer customer = null;
         LocalDate issueDate = null;
@@ -143,7 +143,7 @@ public class InvoiceMapperImpl implements InvoiceMapper {
             return null;
         }
 
-        String id = null;
+        Long id = null;
         String description = null;
         BigDecimal amount = null;
 

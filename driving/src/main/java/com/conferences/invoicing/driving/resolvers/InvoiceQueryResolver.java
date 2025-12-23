@@ -21,6 +21,6 @@ public class InvoiceQueryResolver implements GraphQLQueryResolver {
 
     public Invoice getInvoiceById(String id) {
 
-        return invoiceReadPort.findById(id).orElse(null);
+        return invoiceReadPort.findById(Long.valueOf(id)).orElse(null);
     }
 }

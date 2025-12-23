@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class InvoiceLine {
 
-    private String id;
+    private Long id;
     private String description;
 
     private BigDecimal amount;

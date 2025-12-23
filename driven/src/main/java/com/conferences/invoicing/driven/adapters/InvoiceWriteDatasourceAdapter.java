@@ -28,9 +28,18 @@ public class InvoiceWriteDatasourceAdapter implements InvoiceWriteDatasourcePort
   private final InvoiceMapper invoiceMapper;
 
   @Override
-  public void save(Invoice invoice) {
+  public Long save(Invoice invoice) {
 
     InvoiceMO invoiceMO = invoiceMapper.map(invoice);
-    em.merge(invoiceMO);
+
+    if (invoice.getId() == null) {
+      em.persist(invoiceMO);
+    } else {
+      invoiceMO = em.merge(invoiceMO);
+    }
+
+    em.flush();
+
+    return invoiceMO.getId();
   }
 }

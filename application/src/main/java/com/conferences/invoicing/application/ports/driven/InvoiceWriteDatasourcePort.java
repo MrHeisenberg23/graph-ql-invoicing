@@ -4,5 +4,5 @@ import com.conferences.invoicing.domain.Invoice;
 
 public interface InvoiceWriteDatasourcePort {
 
-  void save(Invoice invoice);
+  Long save(Invoice invoice);
 }

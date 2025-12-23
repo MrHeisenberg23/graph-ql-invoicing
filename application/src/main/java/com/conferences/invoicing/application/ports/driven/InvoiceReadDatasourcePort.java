@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface InvoiceReadDatasourcePort {
 
-  Optional<Invoice> findById(String id);
+  Optional<Invoice> findById(Long id);
 
   List<Invoice> findAll();
 }

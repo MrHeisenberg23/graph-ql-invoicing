@@ -17,7 +17,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class Invoice {
 
-    private String id;
+    private Long id;
     private String invoiceNumber;
     private Customer customer;
 
@@ -59,7 +59,6 @@ public class Invoice {
         }
 
         return Invoice.builder()
-                .id(UUID.randomUUID().toString())
                 .status(InvoiceStatus.DRAFT)
                 .invoiceNumber(invoiceCommand.invoiceNumber())
                 .customer(Customer.builder()

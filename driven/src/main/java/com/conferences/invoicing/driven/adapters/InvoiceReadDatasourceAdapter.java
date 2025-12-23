@@ -23,7 +23,7 @@ public class InvoiceReadDatasourceAdapter implements InvoiceReadDatasourcePort {
   private final InvoiceMapper invoiceMapper;
 
   @Override
-  public Optional<Invoice> findById(String id) {
+  public Optional<Invoice> findById(Long id) {
 
     List<InvoiceMO> result = em.createQuery(
                     """

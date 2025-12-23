@@ -16,8 +16,8 @@ import java.util.Set;
 public class InvoiceMO {
 
     @Id
-    @Column(name = "id", nullable = false, length = 36)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "invoice_number", nullable = false, unique = true)
     private String invoiceNumber;
