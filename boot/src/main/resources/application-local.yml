@@ -1,6 +1,6 @@
 spring:
     flyway:
-        locations: classpath:db/migration/versions
+        locations: classpath:db/migration
         enabled: true
         baseline-on-migrate: true
         baseline-version: 0
@@ -22,14 +22,3 @@ spring:
         generate-ddl: false
         show-sql: true
         open-in-view: true
-
-fwkcna:
-    jpa:
-        data-migration:
-            disabled: false
-
-
-application:
-  parameters:
-    sites:
-      warehouseType: ZDC0

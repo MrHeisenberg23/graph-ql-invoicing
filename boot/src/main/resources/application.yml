@@ -3,7 +3,8 @@ spring:
     name: graph-ql-invoicing
 
   flyway:
-    locations: classpath:db/migration/versions
+    enabled: true
+    locations: classpath:migration/versions
     user: ${FLYWAY_DATABASE_USERNAME}
     password: ${FLYWAY_DATABASE_PASSWORD}
     baseline-on-migrate: true
@@ -33,11 +34,6 @@ management:
     web:
       exposure:
         include: [ info, health, metrics, prometheus ]
-
-fwkcna:
-  jpa:
-    data-migration:
-      disabled: false
 
 server:
   port: 8080
