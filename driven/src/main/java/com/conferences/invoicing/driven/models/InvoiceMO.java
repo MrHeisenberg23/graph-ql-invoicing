@@ -22,7 +22,7 @@ public class InvoiceMO {
     @Column(name = "invoice_number", nullable = false, unique = true)
     private String invoiceNumber;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id")
     private CustomerMO customer;
 

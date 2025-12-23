@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Set;
+import java.util.UUID;
 
 @Data
 @Builder
@@ -26,8 +27,6 @@ public class Invoice {
     private InvoiceStatus status;
     private Set<InvoiceLine> lines;
 
-    private BigDecimal total;
-
     public void addLine(InvoiceLine line) {
 
         if (status != InvoiceStatus.DRAFT) {
@@ -43,6 +42,13 @@ public class Invoice {
         lines.add(line);
     }
 
+    public BigDecimal getTotal() {
+
+        return lines.stream()
+                .map(InvoiceLine::getAmount)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
     public static Invoice createInvoice(CreateInvoiceCommand invoiceCommand) {
 
         Set<InvoiceLine> lines = invoiceCommand.lines();
@@ -53,6 +59,7 @@ public class Invoice {
         }
 
         return Invoice.builder()
+                .id(UUID.randomUUID().toString())
                 .status(InvoiceStatus.DRAFT)
                 .invoiceNumber(invoiceCommand.invoiceNumber())
                 .customer(Customer.builder()

@@ -26,7 +26,4 @@ public class CustomerMO {
 
     @Column(name = "vat_number")
     private String vatNumber;
-
-    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
-    private Set<InvoiceMO> invoices;
 }

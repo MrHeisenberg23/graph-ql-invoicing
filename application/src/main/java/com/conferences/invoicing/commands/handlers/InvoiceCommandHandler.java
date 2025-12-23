@@ -26,7 +26,7 @@ public class InvoiceCommandHandler implements InvoiceCommandPort {
         Invoice toBeCreatedInvoice = Invoice.createInvoice(command);
 
         invoiceWritePort.save(toBeCreatedInvoice);
-        return toBeCreatedInvoice;
+        return invoiceReadPort.findById(toBeCreatedInvoice.getId()).orElseThrow();
     }
 
     public void handle(AddInvoiceLineCommand command) {
@@ -35,8 +35,9 @@ public class InvoiceCommandHandler implements InvoiceCommandPort {
                 .orElseThrow(IllegalArgumentException::new);
 
         InvoiceLine line = InvoiceLine.builder()
-                .id(UUID.randomUUID().toString())
+                .id(command.lineId())
                 .description(command.description())
+                .amount(command.amount())
                 .build();
 
         invoice.addLine(line);

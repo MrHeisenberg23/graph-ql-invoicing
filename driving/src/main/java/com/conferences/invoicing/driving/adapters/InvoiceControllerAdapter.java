@@ -38,10 +38,9 @@ public class InvoiceControllerAdapter {
     ) {
       AddInvoiceLineCommand command = new AddInvoiceLineCommand(
               invoiceId,
+              request.lineId(),
               request.description(),
-              request.quantity(),
-              request.amount(),
-              request.currency()
+              request.amount()
       );
 
       invoiceCommandPort.handle(command);

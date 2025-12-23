@@ -12,4 +12,9 @@ public class GraphQLScalarConfig {
     public GraphQLScalarType dateScalar() {
         return ExtendedScalars.Date;
     }
+
+    @Bean
+    public GraphQLScalarType bigDecimalScalar() {
+        return ExtendedScalars.GraphQLBigDecimal;
+    }
 }

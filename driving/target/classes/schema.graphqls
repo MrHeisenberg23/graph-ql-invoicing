@@ -6,6 +6,7 @@ enum InvoiceStatus {
 }
 
 scalar Date
+scalar BigDecimal
 
 type Customer {
   id: String
@@ -17,6 +18,7 @@ type Customer {
 type InvoiceLine {
   id: String
   description: String
+  amount: BigDecimal
 }
 
 type Invoice {
@@ -27,6 +29,7 @@ type Invoice {
   dueDate: Date
   status: InvoiceStatus
   lines: [InvoiceLine]
+  total: BigDecimal
 }
 
 type Query {
