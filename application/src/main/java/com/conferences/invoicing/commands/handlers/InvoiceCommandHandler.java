@@ -35,7 +35,6 @@ public class InvoiceCommandHandler implements InvoiceCommandPort {
                 .orElseThrow(IllegalArgumentException::new);
 
         InvoiceLine line = InvoiceLine.builder()
-                .id(command.lineId())
                 .description(command.description())
                 .amount(command.amount())
                 .build();

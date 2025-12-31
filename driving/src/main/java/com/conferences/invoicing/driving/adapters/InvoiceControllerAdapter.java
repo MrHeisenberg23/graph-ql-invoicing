@@ -38,7 +38,6 @@ public class InvoiceControllerAdapter {
     ) {
       AddInvoiceLineCommand command = new AddInvoiceLineCommand(
               Long.valueOf(invoiceId),
-              request.lineId(),
               request.description(),
               request.amount()
       );

@@ -5,7 +5,6 @@ import java.util.Currency;
 
 public record AddInvoiceLineCommand(
         Long invoiceId,
-        Long lineId,
         String description,
         BigDecimal amount
 ) {}

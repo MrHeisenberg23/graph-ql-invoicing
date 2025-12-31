@@ -17,7 +17,6 @@ public interface InvoiceMapper {
 
   CustomerMO map(Customer customer);
 
-  //@Mapping(target = "id", source = "id")
   InvoiceMO map(Invoice invoice);
 
   Invoice map(InvoiceMO invoice);
