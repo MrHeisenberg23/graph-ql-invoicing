@@ -32,7 +32,20 @@ type Invoice {
   total: BigDecimal
 }
 
+type Warehouse {
+  id: String
+  name: String
+  boundaries: [String]
+}
+
+type InvoiceWithAvailableWarehouses {
+  id: String
+  invoiceNumber: String
+  warehouses: [Warehouse]
+}
+
 type Query {
   getAllInvoices: [Invoice]
   getInvoiceById(id: String!): Invoice
+  getInvoicesWithAvailableWarehouses: [InvoiceWithAvailableWarehouses]
 }

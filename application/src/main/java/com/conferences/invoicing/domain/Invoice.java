@@ -2,15 +2,17 @@ package com.conferences.invoicing.domain;
 
 import com.conferences.invoicing.commands.CreateInvoiceCommand;
 import com.conferences.invoicing.constants.InvoiceStatus;
+import com.conferences.invoicing.views.InvoiceWithAvailableWarehousesView;
+import com.conferences.invoicing.views.SiteBoundariesView;
+import com.conferences.invoicing.views.WarehouseView;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Data
 @Builder

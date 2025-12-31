@@ -3,6 +3,7 @@ com/conferences/invoicing/driven/models/InvoiceMO.class
 com/conferences/invoicing/driven/adapters/InvoiceWriteDatasourceAdapter.class
 com/conferences/invoicing/driven/models/CustomerMO.class
 com/conferences/invoicing/driven/mappers/InvoiceMapperImpl.class
+com/conferences/invoicing/driven/adapters/SiteReadDatasourceAdapter.class
 com/conferences/invoicing/driven/models/InvoiceLineMO$InvoiceLineMOBuilder.class
 com/conferences/invoicing/driven/models/InvoiceMO$InvoiceMOBuilder.class
 com/conferences/invoicing/driven/models/CustomerMO$CustomerMOBuilder.class
