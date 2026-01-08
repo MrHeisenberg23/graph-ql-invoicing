@@ -48,4 +48,5 @@ type Query {
   getAllInvoices: [Invoice]
   getInvoiceById(id: String!): Invoice
   getInvoicesWithAvailableWarehouses: [InvoiceWithAvailableWarehouses]
+  getCustomInvoices(ids: [ID!]!): [Invoice!]!
 }
