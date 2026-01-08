@@ -175,6 +175,34 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Get invoices with customers with data loader",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": \"query { getCustomInvoices(ids: [\\\"1\\\", \\\"2\\\", \\\"3\\\"]) { id customer { id name } } }\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

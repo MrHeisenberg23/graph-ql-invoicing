@@ -32,7 +32,7 @@ public class InvoiceFieldResolver implements graphql.kickstart.tools.GraphQLReso
                 .build();
     }
 
-    /*public CompletableFuture<Customer> customer(
+    public CompletableFuture<Customer> customer(
             Invoice invoice,
             DataFetchingEnvironment env
     ) {
@@ -40,5 +40,5 @@ public class InvoiceFieldResolver implements graphql.kickstart.tools.GraphQLReso
                 env.getDataLoader("customerByInvoiceId");
 
         return loader.load(invoice.getId());
-    }*/
+    }
 }
