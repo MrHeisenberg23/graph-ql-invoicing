@@ -47,7 +47,7 @@ type InvoiceWithAvailableWarehouses {
 }
 
 type InvoiceConnection {
-  edges: [InvoiceEdge!]!
+  edges: [InvoiceEdge]
   pageInfo: PageInfo!
 }
 

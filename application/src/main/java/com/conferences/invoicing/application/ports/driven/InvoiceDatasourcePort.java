@@ -2,7 +2,9 @@ package com.conferences.invoicing.application.ports.driven;
 
 import com.conferences.invoicing.domain.Customer;
 import com.conferences.invoicing.domain.Invoice;
+import com.conferences.invoicing.domain.InvoiceLine;
 import com.conferences.invoicing.domain.projections.InvoiceWithCustomerProjection;
+import com.conferences.invoicing.domain.projections.InvoiceWithLineProjection;
 import com.conferences.invoicing.views.InvoiceWithAvailableWarehousesView;
 import org.springframework.data.domain.ScrollPosition;
 import org.springframework.data.domain.Window;
@@ -18,6 +20,8 @@ public interface InvoiceDatasourcePort {
 
   Long save(Invoice invoice);
 
+  Optional<Invoice> findByIdWithCascade(Long id);
+
   Optional<Invoice> findById(Long id);
 
   List<Invoice> findAll();
@@ -25,4 +29,6 @@ public interface InvoiceDatasourcePort {
   Customer findCustomerByInvoice(Long id);
 
   Set<InvoiceWithCustomerProjection> getInvoices(Set<Long> ids);
+
+  Set<InvoiceWithLineProjection> getInvoicesLines(Set<Long> ids);
 }

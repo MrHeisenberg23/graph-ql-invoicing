@@ -2,6 +2,7 @@ package com.conferences.invoicing.driven.repositories;
 
 import com.conferences.invoicing.domain.Customer;
 import com.conferences.invoicing.domain.projections.InvoiceWithCustomerProjection;
+import com.conferences.invoicing.domain.projections.InvoiceWithLineProjection;
 import com.conferences.invoicing.driven.models.CustomerMO;
 import com.conferences.invoicing.driven.models.InvoiceMO;
 import org.springframework.data.domain.Pageable;
@@ -31,12 +32,26 @@ public interface InvoiceRepository extends JpaRepository<InvoiceMO, Long>, Query
     Optional<CustomerMO> findCustomerByInvoiceId(@Param("invoiceId") Long invoiceId);
 
     @Query("""
-       select i.id as id, i.customer as customer
-       from InvoiceMO i
-           join i.customer c
-       where i.id in :ids
+        select 
+            i.id as invoiceId,
+            l as line
+        from InvoiceMO i
+        join i.lines l
+        where i.id in :ids
     """)
-    Set<InvoiceWithCustomerProjection> findInvoicesWithCustomer(Set<Long> ids);
+    Set<InvoiceWithLineProjection> findInvoicesWithLines(
+            @Param("ids") Set<Long> ids
+    );
+
+    @Query("""
+      select i.id as invoiceId, i.customer as customer
+      from InvoiceMO i
+      join i.customer c
+      where i.id in :ids
+    """)
+    Set<InvoiceWithCustomerProjection> findInvoicesWithCustomer(
+            @Param("ids") Set<Long> ids
+    );
 
 }
 

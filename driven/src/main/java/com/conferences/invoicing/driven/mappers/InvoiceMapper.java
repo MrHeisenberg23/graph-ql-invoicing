@@ -9,6 +9,7 @@ import com.conferences.invoicing.driven.models.InvoiceMO;
 import org.mapstruct.*;
 
 import java.util.Objects;
+import java.util.UUID;
 
 @Mapper(componentModel = "spring", builder = @Builder(disableBuilder = true))
 public interface InvoiceMapper {
@@ -19,11 +20,14 @@ public interface InvoiceMapper {
 
   Customer map(CustomerMO customer);
 
+  @Mapping(target = "id", source = "id")
   InvoiceMO map(Invoice invoice);
 
   @Mapping(target = "customer", ignore = true)
   @Mapping(target = "lines", ignore = true)
   Invoice map(InvoiceMO invoice);
+
+  Invoice mapFullInvoice(InvoiceMO invoice);
 
   @AfterMapping
   default void afterMapping(@MappingTarget InvoiceMO invoice) {
@@ -39,7 +43,7 @@ public interface InvoiceMapper {
     if (Objects.nonNull(customer)) {
 
       customer.setVatNumber("vat");
-      customer.setEmail("email");
+      customer.setEmail(UUID.randomUUID().toString());
       customer.setName("name");
     }
   }

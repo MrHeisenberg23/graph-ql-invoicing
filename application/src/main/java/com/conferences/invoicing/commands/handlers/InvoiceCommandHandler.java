@@ -22,7 +22,7 @@ public class InvoiceCommandHandler implements InvoiceCommandPort {
         Invoice toBeCreatedInvoice = Invoice.createInvoice(command);
 
         Long createdInvoice = invoicePort.save(toBeCreatedInvoice);
-        return invoicePort.findById(createdInvoice).orElseThrow();
+        return invoicePort.findByIdWithCascade(createdInvoice).orElseThrow();
     }
 
     public void handle(AddInvoiceLineCommand command) {

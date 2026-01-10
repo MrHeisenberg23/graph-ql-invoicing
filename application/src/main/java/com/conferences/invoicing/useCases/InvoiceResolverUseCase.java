@@ -5,8 +5,10 @@ import com.conferences.invoicing.application.ports.driven.SiteReadDatasourcePort
 import com.conferences.invoicing.application.ports.driving.InvoiceResolverPort;
 import com.conferences.invoicing.domain.Customer;
 import com.conferences.invoicing.domain.Invoice;
+import com.conferences.invoicing.domain.InvoiceLine;
 import com.conferences.invoicing.domain.InvoiceWithAvailableWarehouses;
 import com.conferences.invoicing.domain.projections.InvoiceWithCustomerProjection;
+import com.conferences.invoicing.domain.projections.InvoiceWithLineProjection;
 import com.conferences.invoicing.views.InvoiceWithAvailableWarehousesView;
 import com.conferences.invoicing.views.SiteBoundariesView;
 import com.conferences.invoicing.views.WarehouseView;
@@ -54,11 +56,31 @@ public class InvoiceResolverUseCase implements InvoiceResolverPort {
     public Map<Long, Customer> findCustomersByInvoiceIds(Set<Long> invoiceIds) {
         return invoiceDatasourcePort.getInvoices(invoiceIds)
                 .stream()
-                .collect(
-                        Collectors.toMap(
-                                InvoiceWithCustomerProjection::getInvoiceId,
-                                InvoiceWithCustomerProjection::getCustomer
-                        )
-                );
+                .collect(Collectors.toMap(
+                        InvoiceWithCustomerProjection::getInvoiceId,
+                        p -> new Customer(
+                            p.getCustomer().getId(),
+                            p.getCustomer().getName(),
+                            p.getCustomer().getEmail(),
+                            p.getCustomer().getVatNumber())
+                ));
     }
+
+    @Override
+    public Map<Long, Set<InvoiceLine>> findLinesByInvoices(Set<Long> invoiceIds) {
+        return invoiceDatasourcePort.getInvoicesLines(invoiceIds)
+                .stream()
+                .collect(Collectors.groupingBy(
+                        InvoiceWithLineProjection::getInvoiceId,
+                        Collectors.mapping(p ->
+                                        new InvoiceLine(
+                                                p.getLine().getId(),
+                                                p.getLine().getDescription(),
+                                                p.getLine().getAmount()
+                                        ),
+                                Collectors.toSet()
+                        )
+                ));
+    }
+
 }

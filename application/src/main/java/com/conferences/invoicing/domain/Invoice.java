@@ -47,7 +47,8 @@ public class Invoice {
 
     public BigDecimal getTotal() {
 
-        return lines.stream()
+        return Optional.ofNullable(lines).orElse(Set.of())
+                .stream()
                 .map(InvoiceLine::getAmount)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }

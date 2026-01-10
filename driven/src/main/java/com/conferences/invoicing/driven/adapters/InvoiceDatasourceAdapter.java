@@ -4,6 +4,7 @@ import com.conferences.invoicing.application.ports.driven.InvoiceDatasourcePort;
 import com.conferences.invoicing.domain.Customer;
 import com.conferences.invoicing.domain.Invoice;
 import com.conferences.invoicing.domain.projections.InvoiceWithCustomerProjection;
+import com.conferences.invoicing.domain.projections.InvoiceWithLineProjection;
 import com.conferences.invoicing.driven.mappers.InvoiceMapper;
 import com.conferences.invoicing.driven.models.InvoiceMO;
 import com.conferences.invoicing.driven.repositories.InvoiceRepository;
@@ -57,6 +58,13 @@ public class InvoiceDatasourceAdapter implements InvoiceDatasourcePort {
   }
 
   @Override
+  public Optional<Invoice> findByIdWithCascade(Long id) {
+
+    return invoiceRepository.findById(id)
+            .map(invoiceMapper::mapFullInvoice);
+  }
+
+  @Override
   public List<Invoice> findAll() {
     return invoiceRepository.findAll()
             .stream()
@@ -83,6 +91,11 @@ public class InvoiceDatasourceAdapter implements InvoiceDatasourcePort {
     return invoiceRepository.findInvoicesWithCustomer(ids);
   }
 
+  @Override
+  public Set<InvoiceWithLineProjection> getInvoicesLines(Set<Long> ids) {
+
+    return invoiceRepository.findInvoicesWithLines(ids);
+  }
 
   //@Override
   public Set<InvoiceWithCustomerProjection> getInvoices(DataFetchingEnvironment env)
