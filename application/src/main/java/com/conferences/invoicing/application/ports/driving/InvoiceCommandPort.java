@@ -9,4 +9,6 @@ public interface InvoiceCommandPort {
   Invoice handle(CreateInvoiceCommand command);
 
   void handle(AddInvoiceLineCommand command);
+
+
 }

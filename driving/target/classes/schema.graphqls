@@ -7,6 +7,7 @@ enum InvoiceStatus {
 
 scalar Date
 scalar BigDecimal
+scalar Money
 
 type Customer {
   id: String
@@ -30,6 +31,7 @@ type Invoice {
   status: InvoiceStatus
   lines: [InvoiceLine]
   total: BigDecimal
+  totalMoney: Money!
 }
 
 type Warehouse {
@@ -44,8 +46,33 @@ type InvoiceWithAvailableWarehouses {
   warehouses: [Warehouse]
 }
 
+type InvoiceConnection {
+  edges: [InvoiceEdge!]!
+  pageInfo: PageInfo!
+}
+
+type InvoiceEdge {
+  cursor: String!
+  node: Invoice!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+type Query {
+  getAllInvoices(
+    first: Int
+    after: String
+  ): InvoiceConnection
+}
+
 type Query {
   getAllInvoices: [Invoice]
+  getInvoices(first: Int, after: String): InvoiceConnection
   getInvoiceById(id: String!): Invoice
   getInvoicesWithAvailableWarehouses: [InvoiceWithAvailableWarehouses]
   getCustomInvoices(ids: [ID!]!): [Invoice!]!

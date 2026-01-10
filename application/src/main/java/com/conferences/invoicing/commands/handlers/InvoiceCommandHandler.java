@@ -7,11 +7,9 @@ import com.conferences.invoicing.commands.AddInvoiceLineCommand;
 import com.conferences.invoicing.commands.CreateInvoiceCommand;
 import com.conferences.invoicing.domain.Invoice;
 import com.conferences.invoicing.domain.InvoiceLine;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
-import java.util.UUID;
 
 @Transactional
 @Service

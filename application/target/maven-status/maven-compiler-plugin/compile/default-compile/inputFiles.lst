@@ -1,3 +1,4 @@
+/Users/csainz/data/dev/team-conferences/graph-ql-invoicing/application/src/main/java/com/conferences/invoicing/domain/scalars/Money.java
 /Users/csainz/data/dev/team-conferences/graph-ql-invoicing/application/src/main/java/com/conferences/invoicing/commands/AddInvoiceLineCommand.java
 /Users/csainz/data/dev/team-conferences/graph-ql-invoicing/application/src/main/java/com/conferences/invoicing/application/ports/driven/InvoiceWriteDatasourcePort.java
 /Users/csainz/data/dev/team-conferences/graph-ql-invoicing/application/src/main/java/com/conferences/invoicing/application/ports/driving/InvoiceCommandPort.java

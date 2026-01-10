@@ -11,14 +11,24 @@
     <artifactId>boot</artifactId>
 
     <dependencies>
+
         <dependency>
             <groupId>com.conferences</groupId>
             <artifactId>driving</artifactId>
         </dependency>
+
         <dependency>
             <groupId>com.conferences</groupId>
             <artifactId>driven</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.graphql-java</groupId>
+            <artifactId>graphql-java-extended-scalars</artifactId>
+            <version>21.0</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>

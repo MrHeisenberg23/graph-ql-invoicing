@@ -2,6 +2,7 @@ package com.conferences.invoicing.domain;
 
 import com.conferences.invoicing.commands.CreateInvoiceCommand;
 import com.conferences.invoicing.constants.InvoiceStatus;
+import com.conferences.invoicing.domain.scalars.Money;
 import com.conferences.invoicing.views.InvoiceWithAvailableWarehousesView;
 import com.conferences.invoicing.views.SiteBoundariesView;
 import com.conferences.invoicing.views.WarehouseView;
@@ -49,6 +50,14 @@ public class Invoice {
         return lines.stream()
                 .map(InvoiceLine::getAmount)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    public Money getTotalMoney() {
+
+        return Money.builder()
+                .amount(this.getTotal())
+                .currency(Currency.getAvailableCurrencies().stream().findAny().orElse(null))
+                .build();
     }
 
     public static Invoice createInvoice(CreateInvoiceCommand invoiceCommand) {

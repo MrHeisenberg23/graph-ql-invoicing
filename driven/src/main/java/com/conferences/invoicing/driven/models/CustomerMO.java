@@ -1,9 +1,11 @@
 package com.conferences.invoicing.driven.models;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.*;
 
-import javax.persistence.*;
-import java.util.Set;
 
 @Getter
 @Setter
