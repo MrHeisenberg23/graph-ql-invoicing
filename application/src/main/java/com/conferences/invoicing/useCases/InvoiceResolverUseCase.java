@@ -62,7 +62,7 @@ public class InvoiceResolverUseCase implements InvoiceResolverPort {
                             p.getCustomer().getId(),
                             p.getCustomer().getName(),
                             p.getCustomer().getEmail(),
-                            p.getCustomer().getVatNumber())
+                            p.getCustomer().getVatNumber(), Set.of())
                 ));
     }
 

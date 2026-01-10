@@ -4,18 +4,18 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Set;
 
 @Data
 @Builder
 @AllArgsConstructor
-public class Customer {
+public class Address {
 
     private String id;
-    private String name;
-    private String email;
-    private String vatNumber;
+    private Set<BigInteger> boundaries;
 
-    private Set<Address> addresses;
+    protected Address() {}
 }
 

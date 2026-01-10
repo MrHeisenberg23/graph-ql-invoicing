@@ -28,7 +28,9 @@ public class Invoice {
     private LocalDate dueDate;
 
     private InvoiceStatus status;
+
     private Set<InvoiceLine> lines;
+    private Set<Address> addresses;
 
     public void addLine(InvoiceLine line) {
 

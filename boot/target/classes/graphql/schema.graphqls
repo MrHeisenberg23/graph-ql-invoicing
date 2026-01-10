@@ -14,6 +14,7 @@ type Customer {
   name: String
   email: String
   vatNumber: String
+  addresses: [Address!]!
 }
 
 type InvoiceLine {
@@ -30,8 +31,15 @@ type Invoice {
   dueDate: Date
   status: InvoiceStatus
   lines: [InvoiceLine]
+  addresses: [Address!]!
   total: BigDecimal
   totalMoney: Money!
+}
+
+type Address {
+  id: ID!
+  street: String!
+  city: String!
 }
 
 type Warehouse {
