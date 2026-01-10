@@ -10,6 +10,7 @@
     <java.version>17</java.version>
     <spring.boot.version>3.2.0</spring.boot.version>
     <mapstruct.version>1.5.5.Final</mapstruct.version>
+    <querydsl.version>5.0.0</querydsl.version>
 
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
@@ -45,15 +46,18 @@
       </dependency>
 
       <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-graphql</artifactId>
+        <groupId>com.querydsl</groupId>
+        <artifactId>querydsl-core</artifactId>
+        <version>${querydsl.version}</version>
       </dependency>
 
+      <!-- QueryDSL JPA (Jakarta) -->
       <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-web</artifactId>
+        <groupId>com.querydsl</groupId>
+        <artifactId>querydsl-jpa</artifactId>
+        <classifier>jakarta</classifier>
+        <version>${querydsl.version}</version>
       </dependency>
-
 
       <dependency>
         <groupId>com.graphql-java</groupId>
@@ -93,6 +97,17 @@
                 <groupId>org.mapstruct</groupId>
                 <artifactId>mapstruct-processor</artifactId>
                 <version>${mapstruct.version}</version>
+              </path>
+              <path>
+                <groupId>com.querydsl</groupId>
+                <artifactId>querydsl-apt</artifactId>
+                <classifier>jakarta</classifier>
+                <version>${querydsl.version}</version>
+              </path>
+              <path>
+                <groupId>jakarta.persistence</groupId>
+                <artifactId>jakarta.persistence-api</artifactId>
+                <version>3.1.0</version>
               </path>
               <path>
                 <groupId>org.projectlombok</groupId>

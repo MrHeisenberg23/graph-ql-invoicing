@@ -1,2 +1,4 @@
-/Users/csainz/data/dev/team-conferences/graph-ql-invoicing/driving/src/main/java/com/conferences/invoicing/driving/resolvers/InvoiceQueryResolver.java
+/Users/csainz/data/dev/team-conferences/graph-ql-invoicing/driving/src/main/java/com/conferences/invoicing/driving/resolvers/invoice/InvoiceQueryController.java
 /Users/csainz/data/dev/team-conferences/graph-ql-invoicing/driving/src/main/java/com/conferences/invoicing/driving/adapters/InvoiceControllerAdapter.java
+/Users/csainz/data/dev/team-conferences/graph-ql-invoicing/driving/src/main/java/com/conferences/invoicing/driving/resolvers/invoice/fieldOrchestrations/InvoiceFieldBatchResolver.java
+/Users/csainz/data/dev/team-conferences/graph-ql-invoicing/driving/src/main/java/com/conferences/invoicing/driving/resolvers/invoice/fieldOrchestrations/InvoiceFieldResolver.java

@@ -82,4 +82,16 @@ public class InvoiceDatasourceAdapter implements InvoiceDatasourcePort {
 
     return invoiceRepository.findInvoicesWithCustomer(ids);
   }
+
+
+  //@Override
+  public Set<InvoiceWithCustomerProjection> getInvoices(DataFetchingEnvironment env)
+          throws Exception {
+
+    return (Set<InvoiceWithCustomerProjection>) QuerydslDataFetcher
+            .builder(invoiceRepository)
+            .projectAs(InvoiceWithCustomerProjection.class)
+            .many()
+            .get(env);
+  }
 }

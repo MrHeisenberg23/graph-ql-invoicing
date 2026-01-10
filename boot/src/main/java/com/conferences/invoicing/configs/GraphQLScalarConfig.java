@@ -6,6 +6,7 @@ import graphql.scalars.ExtendedScalars;
 import graphql.schema.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.graphql.execution.RuntimeWiringConfigurer;
 
 import java.math.BigDecimal;
 import java.util.Currency;
@@ -14,18 +15,14 @@ import java.util.Currency;
 public class GraphQLScalarConfig {
 
     @Bean
-    public GraphQLScalarType dateScalar() {
-        return ExtendedScalars.Date;
+    public RuntimeWiringConfigurer runtimeWiringConfigurer() {
+        return wiringBuilder -> wiringBuilder
+                .scalar(ExtendedScalars.Date)
+                .scalar(ExtendedScalars.GraphQLBigDecimal)
+                .scalar(moneyScalar());
     }
 
-    @Bean
-    public GraphQLScalarType bigDecimalScalar() {
-        return ExtendedScalars.GraphQLBigDecimal;
-    }
-
-    @Bean
-    public GraphQLScalarType money() {
-
+    private GraphQLScalarType moneyScalar() {
         return GraphQLScalarType.newScalar()
                 .name("Money")
                 .description("Monetary value with amount and currency")
@@ -56,7 +53,6 @@ public class GraphQLScalarConfig {
                         if (!(input instanceof String s)) {
                             throw new CoercingParseValueException("Money must be a string");
                         }
-
                         String[] parts = s.split(" ");
                         return new Money(
                                 new BigDecimal(parts[0]),

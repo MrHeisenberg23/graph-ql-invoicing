@@ -64,13 +64,6 @@ type PageInfo {
 }
 
 type Query {
-  getAllInvoices(
-    first: Int
-    after: String
-  ): InvoiceConnection
-}
-
-type Query {
   getAllInvoices: [Invoice]
   getInvoices(first: Int, after: String): InvoiceConnection
   getInvoiceById(id: String!): Invoice

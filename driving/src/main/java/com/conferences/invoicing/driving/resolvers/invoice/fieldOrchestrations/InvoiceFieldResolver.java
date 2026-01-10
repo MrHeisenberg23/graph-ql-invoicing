@@ -23,8 +23,8 @@ public class InvoiceFieldResolver {
     private final InvoiceResolverPort invoiceResolverPort;
 
     // N+1 version (educational example)
-    @SchemaMapping(typeName = "Invoice", field = "customer")
+    /*@SchemaMapping(typeName = "Invoice", field = "customer")
     public Customer customer(Invoice invoice) {
         return invoiceResolverPort.findCustomerByInvoiceId(invoice.getId());
-    }
+    }*/
 }
