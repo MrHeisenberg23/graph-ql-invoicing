@@ -14,8 +14,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2026-01-10T02:43:28+0100",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 23.0.2 (Homebrew)"
+    date = "2026-01-10T13:48:50+0100",
+    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.14 (Homebrew)"
 )
 @Component
 public class InvoiceMapperImpl implements InvoiceMapper {
@@ -43,6 +43,22 @@ public class InvoiceMapperImpl implements InvoiceMapper {
     }
 
     @Override
+    public Customer map(CustomerMO customer) {
+        if ( customer == null ) {
+            return null;
+        }
+
+        String id = null;
+        String name = null;
+        String email = null;
+        String vatNumber = null;
+
+        Customer customer1 = new Customer( id, name, email, vatNumber );
+
+        return customer1;
+    }
+
+    @Override
     public InvoiceMO map(Invoice invoice) {
         if ( invoice == null ) {
             return null;
@@ -61,13 +77,13 @@ public class InvoiceMapperImpl implements InvoiceMapper {
             return null;
         }
 
+        Customer customer = null;
+        Set<InvoiceLine> lines = null;
         Long id = null;
         String invoiceNumber = null;
-        Customer customer = null;
         LocalDate issueDate = null;
         LocalDate dueDate = null;
         InvoiceStatus status = null;
-        Set<InvoiceLine> lines = null;
 
         Invoice invoice1 = new Invoice( id, invoiceNumber, customer, issueDate, dueDate, status, lines );
 

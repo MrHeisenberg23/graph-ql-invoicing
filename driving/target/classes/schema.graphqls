@@ -74,6 +74,5 @@ type Query {
   getAllInvoices: [Invoice]
   getInvoices(first: Int, after: String): InvoiceConnection
   getInvoiceById(id: String!): Invoice
-  getInvoicesWithAvailableWarehouses: [InvoiceWithAvailableWarehouses]
   getCustomInvoices(ids: [ID!]!): [Invoice!]!
 }

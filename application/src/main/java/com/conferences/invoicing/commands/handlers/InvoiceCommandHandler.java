@@ -1,7 +1,6 @@
 package com.conferences.invoicing.commands.handlers;
 
-import com.conferences.invoicing.application.ports.driven.InvoiceReadDatasourcePort;
-import com.conferences.invoicing.application.ports.driven.InvoiceWriteDatasourcePort;
+import com.conferences.invoicing.application.ports.driven.InvoiceDatasourcePort;
 import com.conferences.invoicing.application.ports.driving.InvoiceCommandPort;
 import com.conferences.invoicing.commands.AddInvoiceLineCommand;
 import com.conferences.invoicing.commands.CreateInvoiceCommand;
@@ -16,20 +15,19 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class InvoiceCommandHandler implements InvoiceCommandPort {
 
-    private final InvoiceReadDatasourcePort invoiceReadPort;
-    private final InvoiceWriteDatasourcePort invoiceWritePort;
+    private final InvoiceDatasourcePort invoicePort;
 
     public Invoice handle(CreateInvoiceCommand command) {
 
         Invoice toBeCreatedInvoice = Invoice.createInvoice(command);
 
-        Long createdInvoice = invoiceWritePort.save(toBeCreatedInvoice);
-        return invoiceReadPort.findById(createdInvoice).orElseThrow();
+        Long createdInvoice = invoicePort.save(toBeCreatedInvoice);
+        return invoicePort.findById(createdInvoice).orElseThrow();
     }
 
     public void handle(AddInvoiceLineCommand command) {
 
-        Invoice invoice = invoiceReadPort.findById(command.invoiceId())
+        Invoice invoice = invoicePort.findById(command.invoiceId())
                 .orElseThrow(IllegalArgumentException::new);
 
         InvoiceLine line = InvoiceLine.builder()
@@ -38,6 +36,6 @@ public class InvoiceCommandHandler implements InvoiceCommandPort {
                 .build();
 
         invoice.addLine(line);
-        invoiceWritePort.save(invoice);
+        invoicePort.save(invoice);
     }
 }

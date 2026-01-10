@@ -17,8 +17,12 @@ public interface InvoiceMapper {
 
   CustomerMO map(Customer customer);
 
+  Customer map(CustomerMO customer);
+
   InvoiceMO map(Invoice invoice);
 
+  @Mapping(target = "customer", ignore = true)
+  @Mapping(target = "lines", ignore = true)
   Invoice map(InvoiceMO invoice);
 
   @AfterMapping
