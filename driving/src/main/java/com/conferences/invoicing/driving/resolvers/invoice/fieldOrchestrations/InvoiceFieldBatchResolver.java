@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.graphql.data.method.annotation.BatchMapping;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.graphql.data.query.QuerydslDataFetcher;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import reactor.core.publisher.Mono;
 
@@ -54,6 +55,7 @@ public class InvoiceFieldBatchResolver {
     }
 
     @BatchMapping(typeName = "Invoice", field = "total")
+    @PreAuthorize("hasRole('ADMIN')")
     public Map<Invoice, BigDecimal> total(List<Invoice> invoices) {
 
         Set<Long> invoiceIds = invoices.stream()

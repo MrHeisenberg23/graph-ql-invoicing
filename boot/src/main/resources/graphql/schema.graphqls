@@ -7,6 +7,7 @@ enum InvoiceStatus {
 
 scalar Date
 scalar BigDecimal
+scalar BigInteger
 scalar Money
 
 type Customer {
@@ -38,8 +39,7 @@ type Invoice {
 
 type Address {
   id: ID!
-  street: String!
-  city: String!
+  boundaries: [BigInteger]
 }
 
 type Warehouse {

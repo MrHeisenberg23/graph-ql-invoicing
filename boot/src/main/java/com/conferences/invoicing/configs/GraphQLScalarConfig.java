@@ -19,6 +19,7 @@ public class GraphQLScalarConfig {
         return wiringBuilder -> wiringBuilder
                 .scalar(ExtendedScalars.Date)
                 .scalar(ExtendedScalars.GraphQLBigDecimal)
+                .scalar(ExtendedScalars.GraphQLBigInteger)
                 .scalar(moneyScalar());
     }
 

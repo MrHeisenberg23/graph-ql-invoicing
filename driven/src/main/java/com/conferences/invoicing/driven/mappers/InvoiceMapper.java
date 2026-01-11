@@ -20,7 +20,7 @@ public interface InvoiceMapper {
 
   Customer map(CustomerMO customer);
 
-  //@Mapping(target = "id", source = "id")
+  @Mapping(target = "id", source = "id")
   InvoiceMO map(Invoice invoice);
 
   @Mapping(target = "customer", ignore = true)
