@@ -31,14 +31,14 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
 
             Authentication authentication = switch (token) {
                 case "admin-token" -> new UsernamePasswordAuthenticationToken(
-                        "admin",
+                        "ROLE_ADMIN",
                         null,
-                        List.of(new SimpleGrantedAuthority("ADMIN"))
+                        List.of(new SimpleGrantedAuthority("ROLE_ADMIN"))
                 );
                 case "user-token" -> new UsernamePasswordAuthenticationToken(
-                        "user",
+                        "ROLE_USER",
                         null,
-                        List.of(new SimpleGrantedAuthority("USER"))
+                        List.of(new SimpleGrantedAuthority("ROLE_USER"))
                 );
                 default -> null;
             };

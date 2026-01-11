@@ -32,7 +32,7 @@ type Invoice {
   dueDate: Date
   status: InvoiceStatus
   lines: [InvoiceLine]
-  addresses: [Address!]!
+  addresses: [Address]
   total: BigDecimal
   totalMoney: Money!
 }
